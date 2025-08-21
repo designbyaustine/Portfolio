@@ -1,130 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Augustine — Portfolio</title>
-  <style>
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f5f5;color:#222;line-height:1.6}
-    /* Fixed nav */
-    nav{position:fixed;top:0;left:0;width:100%;background:#222;padding:12px 0;z-index:1000}
-    nav ul{display:flex;gap:22px;justify-content:center;margin:0;padding:0;list-style:none}
-    nav a{color:#fff;text-decoration:none;font-weight:700}
-    nav a:hover{color:#14a800}
-    body{padding-top:56px}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Augustine • Portfolio</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --ink:#222; --muted:#666; --accent:#0a7c5c;
+    --shadow:0 6px 18px rgba(0,0,0,.08); --radius:14px; --radius-sm:10px;
+    --max:980px; --gap:22px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;background:var(--bg);color:var(--ink);}
 
-    main{max-width:960px;margin:0 auto;padding:20px}
-    h1,h2{margin:0 0 12px;color:#333}
-    section{margin:28px 0}
+  /* ===== Nav (fixed) ===== */
+  .nav{
+    position:sticky; top:0; z-index:10;
+    backdrop-filter:saturate(180%) blur(8px);
+    background:rgba(255,255,255,.85); border-bottom:1px solid #eee;
+  }
+  .nav__inner{max-width:var(--max); margin:0 auto; padding:12px 18px; display:flex; gap:12px; align-items:center; justify-content:space-between;}
+  .nav__brand{font-weight:700; letter-spacing:.3px}
+  .nav__links{display:flex; gap:18px}
+  .nav__links a{color:var(--ink); text-decoration:none; font-weight:600}
+  .nav__links a:hover{color:var(--accent)}
 
-    /* About */
-    .about{display:flex;gap:18px;align-items:center;background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-    .about img{width:120px;height:120px;object-fit:cover;border-radius:50%;border:3px solid #14a800}
+  /* ===== Layout ===== */
+  .wrap{max-width:var(--max); margin:28px auto 60px; padding:0 18px}
 
-    /* Skills */
-    .skills{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-    .skills ol{margin:0;padding-left:22px}
+  h1,h2{margin:0 0 12px}
+  h1{font-size:clamp(26px,3.2vw,34px)}
+  h2{font-size:clamp(20px,2.6vw,26px)}
+  p{margin:0 0 12px; color:var(--muted); line-height:1.6}
 
-    /* Gallery */
-    .image-gallery{display:flex;flex-direction:column;gap:22px}
-    .image-item{background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:12px;text-align:center}
-    .image-item img{display:block;max-width:600px;width:100%;height:auto;border-radius:10px;margin:0 auto}
-    .caption{max-width:600px;margin:10px auto 0;color:#555;font-size:14px;text-align:justify}
+  /* ===== Cards ===== */
+  .card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px; margin-bottom:var(--gap);}
+  .row{display:grid; grid-template-columns:160px 1fr; gap:20px}
+  @media (max-width:700px){ .row{grid-template-columns:1fr} }
 
-    /* Upwork CTA at bottom */
-    .cta{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.08);text-align:center}
-    .cta h2{margin:0 0 8px}
-    .cta p{margin:6px 0 16px}
-    .upwork-btn{display:inline-block;padding:12px 18px;border-radius:8px;background:#14a800;color:#fff;text-decoration:none;font-weight:700}
-    .upwork-btn:hover{filter:brightness(.95)}
-  </style>
+  /* Profile image */
+  .avatar{
+    width:140px; height:140px; border-radius:50%;
+    object-fit:cover; border:4px solid #fff; box-shadow:var(--shadow);
+  }
+
+  /* Skills */
+  .skills{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:14px}
+  .pill{background:#f0f2f6; border-radius:999px; padding:10px 14px; font-weight:600}
+
+  /* Gallery (uniform tiles) */
+  .gallery{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px}
+  @media (max-width:900px){ .gallery{grid-template-columns:1fr} }
+  .tile{background:var(--card); border-radius:var(--radius-sm); box-shadow:var(--shadow); overflow:hidden}
+  .tile img{display:block; width:100%; height:320px; object-fit:cover}
+  .tile__body{padding:16px}
+  .tile__title{font-weight:700; margin:0 0 8px}
+  .tile__desc{color:var(--muted); font-size:15px; line-height:1.6; margin:0}
+
+  /* CTA */
+  .cta{display:flex; gap:14px; flex-wrap:wrap}
+  .btn{display:inline-block; padding:12px 18px; border-radius:10px; text-decoration:none; font-weight:700}
+  .btn--accent{background:var(--accent); color:#fff}
+  .btn--ghost{border:2px solid var(--accent); color:var(--accent); background:#fff}
+  .btn:hover{filter:brightness(.95)}
+</style>
 </head>
 <body>
-  <!-- Nav -->
-  <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#contact">Upwork</a></li>
-    </ul>
-  </nav>
 
-  <main>
-    <!-- About -->
-    <section id="about" class="about">
-      <!-- IMPORTANT: profile image must be at /images/profile.jpg -->
-      <img src="images/profile.jpg" alt="Augustine profile picture">
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav__inner">
+    <div class="nav__brand">Augustine</div>
+    <div class="nav__links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Upwork</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="card">
+    <div class="row">
+      <img class="avatar" src="profile.jpg" alt="Portrait of Augustine">
       <div>
-        <h1>Hello, I'm Augustine</h1>
-        <p>
-          I specialize in clear, buildable drawings and interior visualizations that balance style and practicality.
-          I focus on simple, sustainable solutions that are easy to maintain and communicate well to clients, builders,
-          and reviewers. Tools: AutoCAD, Chief Architect, and 3D rendering.
-        </p>
+        <h1>Hello, I’m Augustine</h1>
+        <p>I create clear, buildable drawings and interior visualizations for residential and light-commercial work. My focus is clean documentation, practical detailing, and calm, modern spaces that are easy to live in and maintain.</p>
+        <p><strong>Tools:</strong> AutoCAD, Chief Architect, 3D rendering.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Skills -->
-    <section id="skills" class="skills">
-      <h2>Skills</h2>
-      <ol type="A">
-        <li>AutoCAD (2D/3D drafting, details, layouts)</li>
-        <li>Chief Architect (residential plans & interiors)</li>
-        <li>3D Rendering & Visualization (lighting/materials)</li>
-        <li>Space Planning & Documentation</li>
-        <li>Landscape Concepts & Elevation Coordination</li>
-      </ol>
-    </section>
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="card">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="pill">AutoCAD (2D/3D)</div>
+      <div class="pill">Chief Architect</div>
+      <div class="pill">Interior space planning</div>
+      <div class="pill">Construction drawings & permits</div>
+      <div class="pill">3D visualization & rendering</div>
+      <div class="pill">Landscape concepts</div>
+    </div>
+  </section>
 
-    <!-- Gallery -->
-    <section id="gallery" class="image-gallery">
-      <h2>Project Gallery</h2>
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="card">
+    <h2>Project Gallery</h2>
+    <div class="gallery">
 
-      <div class="image-item">
-        <!-- IMPORTANT: project images must be inside /images and names must match -->
-        <img src="images/img1.jpg" alt="Kitchen design and rendering">
-        <p class="caption">
-          Modern kitchen design & high-quality 3D rendering that communicates layout, finishes, and lighting before build.
-          Workflow and storage are balanced with a warm, clean palette. Layered lighting (task + ambient) previews daytime
-          and evening scenes. Cabinet modules and clearances reduce door conflicts and tight corners. Deliverables include
-          plan, elevations, and key views to speed alignment with installers.
-        </p>
-      </div>
+      <article class="tile">
+        <img src="img1.jpg" alt="Modern kitchen rendering — island dining, pendant lights, warm finishes">
+        <div class="tile__body">
+          <h3 class="tile__title">Kitchen design and rendering</h3>
+          <p class="tile__desc">
+            Modern kitchen layout with clear work-triangle and ample storage. High-quality 3D render communicates
+            finishes, lighting, and cabinet rhythm before build. Deliverables include plans, elevations, and
+            material schedule aligned with installers to reduce rework and on-site clashes.
+          </p>
+        </div>
+      </article>
 
-      <div class="image-item">
-        <img src="images/img2.jpg" alt="Kitchen design">
-        <p class="caption">
-          Functional layout emphasizing circulation, work-triangle efficiency, and accessible storage.
-          Neutral finishes keep the space timeless and easy to update. Drawer stacks replace deep shelves for quick access.
-          Tall pantry placement shortens travel distance between prep, cook, and serve zones. Documentation centers on
-          practical dimensioning that reduces on-site guesswork.
-        </p>
-      </div>
+      <article class="tile">
+        <img src="img2.jpg" alt="Clean, minimal kitchen design — integrated storage, warm neutral palette">
+        <div class="tile__body">
+          <h3 class="tile__title">Kitchen design</h3>
+          <p class="tile__desc">
+            Functional kitchen concept emphasizing circulation, accessible storage, and timeless finishes.
+            Documentation focuses on practical dimensions, clear notes, and updated cabinet modules for smooth
+            fabrication and fast installation on site.
+          </p>
+        </div>
+      </article>
 
-      <div class="image-item">
-        <img src="images/img3.jpg" alt="Living room and dining interior design">
-        <p class="caption">
-          Open-plan living/dining arranged for easy movement and clear sightlines. Seating and table positions support
-          conversation while maintaining comfortable walk paths. Durable, low-maintenance finishes suit daily use.
-          Lighting scenes separate lounge, dining, and ambient moods without clutter. The result feels calm, modern, and welcoming.
-        </p>
-      </div>
-    </section>
+      <article class="tile">
+        <img src="img3.jpg" alt="Living and dining interior — modern dining set, soft ambient lighting">
+        <div class="tile__body">
+          <h3 class="tile__title">Living & dining interior design</h3>
+          <p class="tile__desc">
+            Open living/dining arranged for easy movement and clear sightlines. Lighting scenes separate lounge,
+            dining, and ambient modes without clutter. Durable, low-maintenance finishes suit daily use while
+            keeping the space warm, modern, and welcoming.
+          </p>
+        </div>
+      </article>
 
-    <!-- Upwork CTA at the BOTTOM -->
-    <section id="contact" class="cta">
-      <h2>Work With Me on Upwork</h2>
-      <p>I take on architecture, interior design, and visualization projects directly through Upwork.</p>
-      <a class="upwork-btn"
-         href="https://www.upwork.com/freelancers/~0120a4e3d72389941f?companyReference=1108070241318502401&mp_source=share"
-         target="_blank" rel="noopener">
-        View my Upwork Profile
-      </a>
-      <p style="font-size:13px;color:#666;margin-top:10px;">
-        Note: I communicate and contract exclusively on Upwork, per platform policy.
-      </p>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / CTA ===== -->
+  <section id="contact" class="card">
+    <h2>Work With Me on Upwork</h2>
+    <p class="tile__desc">I’m available for residential drawings, permit sets, and interior visualizations. I reply quickly and deliver clean, coordinated files.</p>
+    <div class="cta">
+      <a class="btn btn--accent" href="https://www.upwork.com/freelancers/~0120a4e3d72389941f?companyReference=1108070241318502401&mp_source=share" target="_blank" rel="noopener">View my Upwork Profile</a>
+      <a class="btn btn--ghost" href="#projects">See Projects</a>
+    </div>
+  </section>
+
+</div>
 </body>
 </html>
