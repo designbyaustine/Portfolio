@@ -1,228 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Augustine • Portfolio</title>
-<style>
-  :root{
-    --bg:#f6f7fb; --card:#ffffff; --ink:#222; --muted:#666; --accent:#0a7c5c;
-    --shadow:0 6px 18px rgba(0,0,0,.08); --radius:14px; --radius-sm:10px;
-    --max:980px; --gap:22px;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0}
-  body{font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;background:var(--bg);color:var(--ink);}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Augustine – Portfolio</title>
 
-  /* ===== Nav (fixed) ===== */
-  .nav{
-    position:sticky; top:0; z-index:10;
-    backdrop-filter:saturate(180%) blur(8px);
-    background:rgba(255,255,255,.85); border-bottom:1px solid #eee;
-  }
-  .nav__inner{max-width:var(--max); margin:0 auto; padding:12px 18px; display:flex; gap:12px; align-items:center; justify-content:space-between;}
-  .nav__brand{font-weight:700; letter-spacing:.3px}
-  .nav__links{display:flex; gap:18px}
-  .nav__links a{color:var(--ink); text-decoration:none; font-weight:600}
-  .nav__links a:hover{color:var(--accent)}
+  <style>
+    :root{
+      --bg:#f7f7f7; --card:#ffffff; --ink:#222; --muted:#666; --accent:#1f7a8c;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family: Arial, Helvetica, sans-serif; color:var(--ink); background:var(--bg)}
+    main{max-width:1000px; margin:24px auto; padding:0 16px}
+    h1{font-size:clamp(28px,4.5vw,38px); text-align:center; margin:10px 0 26px}
 
-  /* ===== Layout ===== */
-  .wrap{max-width:var(--max); margin:28px auto 60px; padding:0 18px}
-
-  h1,h2{margin:0 0 12px}
-  h1{font-size:clamp(26px,3.2vw,34px)}
-  h2{font-size:clamp(20px,2.6vw,26px)}
-  p{margin:0 0 12px; color:var(--muted); line-height:1.6}
-
-  /* ===== Cards ===== */
-  .card{background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px; margin-bottom:var(--gap);}
-  .row{display:grid; grid-template-columns:160px 1fr; gap:20px}
-  @media (max-width:700px){ .row{grid-template-columns:1fr} }
-
-  /* Profile image */
-  .avatar{
-    width:140px; height:140px; border-radius:50%;
-    object-fit:cover; border:4px solid #fff; box-shadow:var(--shadow);
-  }
-
-  /* Skills */
-  .skills{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:14px}
-  .pill{background:#f0f2f6; border-radius:999px; padding:10px 14px; font-weight:600}
-
-<div class="gallery">
-  <article class="tile">
-    <img src="images/ranchhouse.jpg" alt="Ranchhouse Exterior">
-    <div class="tile__body">
-      <h3 class="tile__title">Ranchhouse Exterior</h3>
-      <p class="tile__desc">Modern ranch house design blending clean lines, warm materials, and a low-profile roof for great curb appeal.</p>
-    </div>
-  </article>
-
-  <article class="tile">
-    <img src="images/bathroom-1.jpg" alt="Bathroom Interior">
-    <div class="tile__body">
-      <h3 class="tile__title">Bathroom Interior</h3>
-      <p class="tile__desc">Luxury bathroom interior featuring balanced lighting, durable finishes, and calm, minimal detailing.</p>
-    </div>
-  </article>
-
-  <article class="tile">
-    <img src="images/face-mirror.jpg" alt="Wall mirror detail">
-    <div class="tile__body">
-      <h3 class="tile__title">Mirror Feature</h3>
-      <p class="tile__desc">Frameless mirror composition designed to reflect light and expand the perceived space elegantly.</p>
-    </div>
-  </article>
-
-  <article class="tile">
-    <img src="images/front-mirror.jpg" alt="Front mirror view">
-    <div class="tile__body">
-      <h3 class="tile__title">Front Mirror View</h3>
-      <p class="tile__desc">Front-facing mirror vignette that pairs clean geometry with a restrained material palette.</p>
-    </div>
-  </article>
-
-  <article class="tile">
-    <img src="images/slantroof.jpg" alt="Slanted roof concept">
-    <div class="tile__body">
-      <h3 class="tile__title">Slanted Roof Concept</h3>
-      <p class="tile__desc">Low-slope roof composition emphasizing horizontal lines, weather protection, and modern character.</p>
-    </div>
-  </article>
-</div>
-
-  /* CTA */
-  .cta{display:flex; gap:14px; flex-wrap:wrap}
-  .btn{display:inline-block; padding:12px 18px; border-radius:10px; text-decoration:none; font-weight:700}
-  .btn--accent{background:var(--accent); color:#fff}
-  .btn--ghost{border:2px solid var(--accent); color:var(--accent); background:#fff}
-  .btn:hover{filter:brightness(.95)}
-</style>
+    /* Gallery grid */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:18px;
+    }
+    .tile{
+      background:var(--card);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:0 2px 8px rgba(0,0,0,.08);
+      display:flex;
+      flex-direction:column;
+    }
+    /* Uniform image size without huge height on mobile */
+    .tile img{
+      width:100%;
+      aspect-ratio: 16 / 10;        /* keeps a neat rectangle */
+      object-fit: cover;             /* crops gently if needed */
+      display:block;
+    }
+    .tile__body{padding:14px}
+    .tile__title{margin:0 0 8px; font-size:18px; font-weight:700}
+    .tile__desc{margin:0; color:var(--muted); line-height:1.5; font-size:14px}
+  </style>
 </head>
 <body>
+  <main>
+    <h1>My Portfolio</h1>
 
-<!-- ===== NAV ===== -->
-<nav class="nav">
-  <div class="nav__inner">
-    <div class="nav__brand">Augustine</div>
-    <div class="nav__links">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Upwork</a>
-    </div>
-  </div>
-</nav>
-
-<div class="wrap">
-
-  <!-- ===== ABOUT ===== -->
-  <section id="about" class="card">
-    <div class="row">
-      <img class="avatar" src="profile.jpg" alt="Portrait of Augustine">
-      <div>
-        <h1>Hello, I’m Augustine</h1>
-        <p>I create clear, buildable drawings and interior visualizations for residential and light-commercial work. My focus is clean documentation, practical detailing, and calm, modern spaces that are easy to live in and maintain.</p>
-        <p><strong>Tools:</strong> AutoCAD, Chief Architect, 3D rendering.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SKILLS ===== -->
-  <section id="skills" class="card">
-    <h2>Skills</h2>
-    <div class="skills">
-      <div class="pill">AutoCAD (2D/3D)</div>
-      <div class="pill">Chief Architect</div>
-      <div class="pill">Interior space planning</div>
-      <div class="pill">Construction drawings & permits</div>
-      <div class="pill">3D visualization & rendering</div>
-      <div class="pill">Landscape concepts</div>
-    </div>
-  </section>
-
-  <!-- ===== PROJECTS ===== -->
-  <section id="projects" class="card">
-    <h2>Project Gallery</h2>
     <div class="gallery">
-
+      <!-- Ranchhouse.jpg -->
       <article class="tile">
-        <img src="img1.jpg" alt="Modern kitchen rendering — island dining, pendant lights, warm finishes">
+        <img src="images/Ranchhouse.jpg" alt="Ranchhouse exterior rendering">
         <div class="tile__body">
-          <h3 class="tile__title">Kitchen design and rendering</h3>
-          <p class="tile__desc">
-            Modern kitchen layout with clear work-triangle and ample storage. High-quality 3D render communicates
-            finishes, lighting, and cabinet rhythm before build. Deliverables include plans, elevations, and
-            material schedule aligned with installers to reduce rework and on-site clashes.
-          </p>
+          <h3 class="tile__title">Ranchhouse Exterior</h3>
+          <p class="tile__desc">Modern ranch house massing with clean lines, warm materials, and a low-profile roof. The façade balances solid wall areas with generous glazing to create welcoming curb appeal.</p>
         </div>
       </article>
 
+      <!-- face-mirror.jpg -->
       <article class="tile">
-        <img src="img2.jpg" alt="Clean, minimal kitchen design — integrated storage, warm neutral palette">
+        <img src="images/face-mirror.jpg" alt="Vanity mirror close-up">
         <div class="tile__body">
-          <h3 class="tile__title">Kitchen design</h3>
-          <p class="tile__desc">
-            Functional kitchen concept emphasizing circulation, accessible storage, and timeless finishes.
-            Documentation focuses on practical dimensions, clear notes, and updated cabinet modules for smooth
-            fabrication and fast installation on site.
-          </p>
+          <h3 class="tile__title">Vanity Mirror Detail</h3>
+          <p class="tile__desc">Frameless mirror composition designed to reflect light and extend sightlines. Finishes are kept calm and neutral for a timeless, easy-to-maintain look.</p>
         </div>
       </article>
 
+      <!-- front-mirror.jpg -->
       <article class="tile">
-        <img src="img3.jpg" alt="Living and dining interior — modern dining set, soft ambient lighting">
+        <img src="images/front-mirror.jpg" alt="Front mirror vignette">
         <div class="tile__body">
-          <h3 class="tile__title">Living & dining interior design</h3>
-          <p class="tile__desc">
-            Open living/dining arranged for easy movement and clear sightlines. Lighting scenes separate lounge,
-            dining, and ambient modes without clutter. Durable, low-maintenance finishes suit daily use while
-            keeping the space warm, modern, and welcoming.
-          </p>
+          <h3 class="tile__title">Front Mirror View</h3>
+          <p class="tile__desc">Front-facing vignette pairing simple geometry with a restrained material palette. Lighting is positioned to avoid glare and give a soft, even reflection.</p>
         </div>
       </article>
 
+      <!-- img1.jpg -->
+      <article class="tile">
+        <img src="images/img1.jpg" alt="Kitchen design and rendering">
+        <div class="tile__body">
+          <h3 class="tile__title">Kitchen Design & Rendering</h3>
+          <p class="tile__desc">Modern kitchen layout with clear circulation, efficient workflow, and durable finishes. Cabinet modules are dimensioned for easy fabrication and installation.</p>
+        </div>
+      </article>
+
+      <!-- img2.jpg -->
+      <article class="tile">
+        <img src="images/img2.jpg" alt="Kitchen view">
+        <div class="tile__body">
+          <h3 class="tile__title">Kitchen View</h3>
+          <p class="tile__desc">A second kitchen angle showing storage, task/ambient lighting, and a warm, simple color palette that supports everyday use.</p>
+        </div>
+      </article>
+
+      <!-- img3.jpg -->
+      <article class="tile">
+        <img src="images/img3.jpg" alt="Living and dining interior">
+        <div class="tile__body">
+          <h3 class="tile__title">Living & Dining Interior</h3>
+          <p class="tile__desc">Open-plan living/dining arranged for easy movement and clear sightlines. Materials are selected for comfort, durability, and low maintenance.</p>
+        </div>
+      </article>
+
+      <!-- office-1.jpg -->
+      <article class="tile">
+        <img src="images/office-1.jpg" alt="3D interior office design">
+        <div class="tile__body">
+          <h3 class="tile__title">Office Interior</h3>
+          <p class="tile__desc">3D visualization of a small office: task lighting, practical storage, and a calm palette that supports focused work and client meetings.</p>
+        </div>
+      </article>
+
+      <!-- permitplan.jpg -->
+      <article class="tile">
+        <img src="images/permitplan.jpg" alt="Permit plan sheet (JPG)">
+        <div class="tile__body">
+          <h3 class="tile__title">Permit Plan (JPG)</h3>
+          <p class="tile__desc">Sample permit sheet emphasizing clear dimensions, callouts, and code notes. Organized for quick reviews and field use.</p>
+        </div>
+      </article>
+
+      <!-- permitplan.png -->
+      <article class="tile">
+        <img src="images/permitplan.png" alt="Permit plan sheet (PNG)">
+        <div class="tile__body">
+          <h3 class="tile__title">Permit Plan (PNG)</h3>
+          <p class="tile__desc">Alternate export format of the same drawing set for flexible sharing and printing environments.</p>
+        </div>
+      </article>
+
+      <!-- profile.jpg (kept for completeness; you can remove if you only want projects) -->
+      <article class="tile">
+        <img src="images/profile.jpg" alt="Augustine profile">
+        <div class="tile__body">
+          <h3 class="tile__title">Profile</h3>
+          <p class="tile__desc">Portrait used across portfolio and proposals.</p>
+        </div>
+      </article>
+
+      <!-- slantroof.jpg -->
+      <article class="tile">
+        <img src="images/slantroof.jpg" alt="Slanted roof concept">
+        <div class="tile__body">
+          <h3 class="tile__title">Slanted Roof Concept</h3>
+          <p class="tile__desc">Low-slope roof composition emphasizing horizontal lines, weather protection, and a clean modern character.</p>
+        </div>
+      </article>
     </div>
-  </section>
-  <section id="portfolio">
-  <h2>My Portfolio</h2>
-  
-  <div class="portfolio-item">
-    <img src="ranchhouse.jpg" alt="Ranchhouse Exterior">
-    <p>Modern ranch house design blending natural tones with open space.</p>
-  </div>
-
-  <div class="portfolio-item">
-    <img src="bathroom-1.jpg" alt="Bathroom Interior">
-    <p>Luxury bathroom interior featuring minimalist design and soft lighting.</p>
-  </div>
-
-  <div class="portfolio-item">
-    <img src="face-mirror.jpg" alt="Mirror Reflection">
-    <p>Artistic mirror reflection piece, emphasizing detail and symmetry.</p>
-  </div>
-
-  <div class="portfolio-item">
-    <img src="front-mirror.jpg" alt="Front Mirror Design">
-    <p>Front mirror design concept showcasing depth and unique framing.</p>
-  </div>
-
-  <div class="portfolio-item">
-    <img src="slantroof.jpg" alt="Slanted Roof Architecture">
-    <p>Innovative slanted roof architecture merging modern style with tradition.</p>
-  </div>
-</section>
-</section>
-  <!-- ===== CONTACT / CTA ===== -->
-  <section id="contact" class="card">
-    <h2>Work With Me on Upwork</h2>
-    <p class="tile__desc">I’m available for residential drawings, permit sets, and interior visualizations. I reply quickly and deliver clean, coordinated files.</p>
-    <div class="cta">
-      <a class="btn btn--accent" href="https://www.upwork.com/freelancers/~0120a4e3d72389941f?companyReference=1108070241318502401&mp_source=share" target="_blank" rel="noopener">View my Upwork Profile</a>
-      <a class="btn btn--ghost" href="#projects">See Projects</a>
-    </div>
-  </section>
-
-</div>
+  </main>
 </body>
 </html>
