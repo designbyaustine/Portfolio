@@ -3,100 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Austine — Portfolio</title>
+  <title>Austine – Portfolio (Upwork)</title>
   <style>
-    /* Layout & colors */
-    body{font-family:Arial,sans-serif;margin:0;background:#f9f9f9;color:#222;line-height:1.6}
-    header{background:#222;color:#fff;padding:22px;text-align:center}
-    main{max-width:950px;margin:0 auto;padding:22px}
-    h1,h2{color:#333;margin:0 0 12px}
-    section{margin:28px 0}
-
-    /* About card */
-    .about{display:flex;gap:18px;align-items:center;background:#fff;border-radius:10px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
-    .about img{width:120px;height:120px;object-fit:cover;border-radius:60px;border:2px solid #eee}
-
-    /* Skills list */
-    .skills{background:#fff;border-radius:10px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
-    .skills ol{margin:0;padding-left:22px}
-
-    /* Image gallery (one per row, smaller) */
-    .image-gallery{display:flex;flex-direction:column;gap:22px}
-    .image-item{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:14px}
-    .image-item img{display:block;max-width:600px;width:100%;height:auto;margin:0 auto;border-radius:8px}
-    .caption{max-width:600px;margin:10px auto 0;font-size:14px;color:#444}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;line-height:1.6;background:#f7f7f7;color:#222}
+    main{max-width:960px;margin:0 auto;padding:24px}
+    h1,h2{margin:0 0 12px;color:#333}
+    section{background:#fff;border-radius:10px;padding:18px;margin:20px 0;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+    /* About */
+    .about{display:flex;gap:18px;align-items:center}
+    .about img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid #eee}
+    /* Skills */
+    .skills ol{margin:0;padding-left:20px}
+    /* Projects */
+    .proj{display:flex;flex-direction:column;gap:22px}
+    .card{padding:12px;border:1px solid #eee;border-radius:8px}
+    .card img{display:block;max-width:650px;width:100%;height:auto;border-radius:8px;margin:0 auto 10px}
+    .card h3{margin:6px 0 8px}
+    .card p{margin:6px 0;text-align:justify}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Austine — Architectural & Landscape Designer</h1>
-    <div>Construction plans • Interior visualization • Site planning</div>
-  </header>
-
   <main>
-    <!-- About -->
+    <header style="text-align:center;margin-bottom:10px;">
+      <h1>Austine – Interior & Architectural Designer</h1>
+      <div style="color:#666">AutoCAD • Chief Architect • 3D Visualization • Permit/Construction Plans</div>
+    </header>
+
+    <!-- About (no external links) -->
     <section class="about">
-      <!-- Upload an image named images/profile.jpg or change the filename below -->
-      <img src="images/profile.jpg" alt="Austine profile portrait" />
+      <img src="images/profile.jpg" alt="Austine profile portrait">
       <div>
         <h2>About Me</h2>
         <p>
-          I create clear, permit-ready construction drawings, interior design visuals, and practical
-          landscape solutions that are easy to build and maintain. I focus on simple, sustainable,
-          client-friendly designs that respect budget, climate, and site constraints.
+          I design clear, buildable drawings and interior visuals that balance style and practicality.
+          My focus is simple, sustainable solutions that are easy to maintain and communicate well
+          to clients, builders, and reviewers. I work across kitchens, living areas, and full-home
+          layouts, producing neat documentation and visuals that reduce revisions and delays.
         </p>
       </div>
     </section>
 
-    <!-- Skills -->
+    <!-- Skills (no icons, no links) -->
     <section class="skills">
       <h2>Skills</h2>
       <ol type="A">
-        <li>AutoCAD (2D/3D)</li>
-        <li>Chief Architect (Residential & Commercial)</li>
-        <li>Landscape Design</li>
-        <li>Construction Drawings & Permit Plans</li>
-        <li>3D Visualization & Rendering</li>
-        <li>Site Planning & Elevation Management</li>
+        <li>AutoCAD (2D/3D drafting, details, layouts)</li>
+        <li>Chief Architect (residential plans & interiors)</li>
+        <li>3D rendering & visualization (lighting/materials)</li>
+        <li>Space planning & code-aware documentation</li>
+        <li>Landscape concepts & elevation coordination</li>
       </ol>
     </section>
 
-    <!-- Work -->
-    <section>
+    <!-- Projects (images + long descriptions, no outbound links) -->
+    <section id="work">
       <h2>My Work</h2>
-
-      <div class="image-gallery">
-        <div class="image-item">
-          <img src="img1.jpg" alt="Kitchen design and rendering — dining table with pendant lights" />
-          <div class="caption">
-            <strong>Kitchen Design & Rendering.</strong>
-            Clean modern palette with warm wood textures and matte black accents.
-            Layout optimized for cooking flow and sightlines to the dining area.
-            Lighting mix balances task pendants with soft ambient wash.
-            Materials selected for easy cleaning and durability in daily use.
-          </div>
+      <div class="proj">
+        <div class="card">
+          <h3>Kitchen Design & Rendering</h3>
+          <img src="img1.jpg" alt="Kitchen design and rendering">
+          <p>
+            A modern kitchen visualization that communicates layout, finishes, and lighting before build.
+            The concept balances workflow and storage with a clean, warm palette clients can relate to.
+            Lighting is layered (task + ambient) for accurate previews of daytime and evening scenes.
+            Cabinet modules and clearances are arranged to minimize door conflicts and tight corners.
+            Deliverables include plan, elevations, and render views to speed alignment with installers.
+          </p>
         </div>
 
-        <div class="image-item">
-          <img src="img2.jpg" alt="Kitchen design — cabinetry, work triangle and storage concept" />
-          <div class="caption">
-            <strong>Kitchen Design Concept.</strong>
-            Functional work-triangle between sink, hob, and fridge for efficient prep.
-            Tall pantry and base drawers maximize accessible storage.
-            Neutral finishes allow future appliance and decor updates.
-            Clearances meet comfortable movement and appliance door swings.
-          </div>
+        <div class="card">
+          <h3>Kitchen Design</h3>
+          <img src="img2.jpg" alt="Kitchen design">
+          <p>
+            A functional concept emphasizing circulation, work triangle efficiency, and accessible storage.
+            Neutral materials keep the space timeless while allowing easy appliance or color updates later.
+            Drawer stacks replace deep shelves for faster access to cookware and daily essentials.
+            Tall pantry placement shortens travel distance between prep, cook, and serve zones.
+            Documentation focuses on practical dimensioning that reduces on-site guesswork.
+          </p>
         </div>
 
-        <div class="image-item">
-          <img src="img3.jpg" alt="Living room and dining interior design — seating and finishes" />
-          <div class="caption">
-            <strong>Living & Dining Interior.</strong>
-            Cohesive seating arrangement supports conversation and dining comfort.
-            Warm natural tones paired with simple forms for a calm feel.
-            Practical finishes specified for easy maintenance and longevity.
-            Lighting layered to separate dining, lounge, and ambient scenes.
-          </div>
+        <div class="card">
+          <h3>Living Room & Dining Interior</h3>
+          <img src="img3.jpg" alt="Living room and dining interior design">
+          <p>
+            Open-plan living/dining arranged for clear movement and natural sightlines across the space.
+            Seating and table positions support conversation while maintaining comfortable walk paths.
+            Materials and textures are selected for durability and easy upkeep in daily use.
+            Lighting scenes separate lounge, dining, and ambient moods without visual clutter.
+            The result is a calm, modern environment that photographs well and feels welcoming in person.
+          </p>
         </div>
       </div>
     </section>
