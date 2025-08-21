@@ -49,56 +49,47 @@
   .skills{display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:14px}
   .pill{background:#f0f2f6; border-radius:999px; padding:10px 14px; font-weight:600}
 
- /* ==== GALLERY (cards + responsive) ==== */
+<div class="gallery">
+  <article class="tile">
+    <img src="images/ranchhouse.jpg" alt="Ranchhouse Exterior">
+    <div class="tile__body">
+      <h3 class="tile__title">Ranchhouse Exterior</h3>
+      <p class="tile__desc">Modern ranch house design blending clean lines, warm materials, and a low-profile roof for great curb appeal.</p>
+    </div>
+  </article>
 
-/* Grid layout for the project tiles */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:16px;
-}
+  <article class="tile">
+    <img src="images/bathroom-1.jpg" alt="Bathroom Interior">
+    <div class="tile__body">
+      <h3 class="tile__title">Bathroom Interior</h3>
+      <p class="tile__desc">Luxury bathroom interior featuring balanced lighting, durable finishes, and calm, minimal detailing.</p>
+    </div>
+  </article>
 
-/* Each tile/card */
-.tile{
-  background:var(--card, #fff);
-  border-radius:10px;
-  box-shadow:0 2px 10px rgba(0,0,0,.06);
-  overflow:hidden;
-}
+  <article class="tile">
+    <img src="images/face-mirror.jpg" alt="Wall mirror detail">
+    <div class="tile__body">
+      <h3 class="tile__title">Mirror Feature</h3>
+      <p class="tile__desc">Frameless mirror composition designed to reflect light and expand the perceived space elegantly.</p>
+    </div>
+  </article>
 
-/* Image sizing: desktop 400x250, cover crop */
-.tile img{
-  display:block;
-  width:400px;       /* fixed width on desktop */
-  height:250px;      /* fixed height on desktop */
-  object-fit:cover;  /* fills without distortion */
-  margin:0 auto;     /* center the fixed-width image */
-  border-bottom:1px solid rgba(0,0,0,.06);
-}
+  <article class="tile">
+    <img src="images/front-mirror.jpg" alt="Front mirror view">
+    <div class="tile__body">
+      <h3 class="tile__title">Front Mirror View</h3>
+      <p class="tile__desc">Front-facing mirror vignette that pairs clean geometry with a restrained material palette.</p>
+    </div>
+  </article>
 
-/* Text blocks inside the card */
-.tile__body{ padding:16px; }
-.tile__title{ font-weight:700; margin:0 0 8px; }
-.tile__desc{ color:var(--muted, #6b7280); font-size:15px; line-height:1.6; }
-
-/* ====== Responsive breakpoints ====== */
-
-/* Tablets: 2 columns, slightly smaller image */
-@media (max-width: 900px){
-  .gallery{ grid-template-columns:repeat(2, 1fr); }
-  .tile img{
-    width:340px;
-    height:215px;
-  }
-}
-
-/* Phones: 1 column, even smaller image */
-@media (max-width: 600px){
-  .gallery{ grid-template-columns:1fr; }
-  .tile img{
-    width:100%;     /* fill the card width on phones */
-    height:200px;   /* keep height controlled */
-  }
+  <article class="tile">
+    <img src="images/slantroof.jpg" alt="Slanted roof concept">
+    <div class="tile__body">
+      <h3 class="tile__title">Slanted Roof Concept</h3>
+      <p class="tile__desc">Low-slope roof composition emphasizing horizontal lines, weather protection, and modern character.</p>
+    </div>
+  </article>
+</div>
 }
 
   /* CTA */
