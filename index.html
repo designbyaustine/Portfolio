@@ -1,122 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Augustine's Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Augustine — Portfolio</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f9f9f9;
-    }
-    header {
-      background: #222;
-      color: white;
-      padding: 15px;
-      text-align: center;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-    header nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    header nav a:hover {
-      color: #00b894;
-    }
-    section {
-      padding: 80px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    .about {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    .about img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 4px solid #00b894;
-      object-fit: cover;
-    }
-    .about button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #00b894;
-      border: none;
-      color: white;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .about button:hover {
-      background: #019870;
-    }
-    .gallery {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-    .gallery img {
-      max-width: 100%;
-      height: auto;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-    }
-    .description {
-      margin-top: 10px;
-      font-size: 15px;
-      color: #555;
-      line-height: 1.6;
-    }
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f5f5;color:#222;line-height:1.6}
+    /* Fixed nav */
+    nav{position:fixed;top:0;left:0;width:100%;background:#222;padding:12px 0;z-index:1000}
+    nav ul{display:flex;gap:22px;justify-content:center;margin:0;padding:0;list-style:none}
+    nav a{color:#fff;text-decoration:none;font-weight:700}
+    nav a:hover{color:#14a800}
+    body{padding-top:56px}
+
+    main{max-width:960px;margin:0 auto;padding:20px}
+    h1,h2{margin:0 0 12px;color:#333}
+    section{margin:28px 0}
+
+    /* About */
+    .about{display:flex;gap:18px;align-items:center;background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    .about img{width:120px;height:120px;object-fit:cover;border-radius:50%;border:3px solid #14a800}
+
+    /* Skills */
+    .skills{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    .skills ol{margin:0;padding-left:22px}
+
+    /* Gallery */
+    .image-gallery{display:flex;flex-direction:column;gap:22px}
+    .image-item{background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:12px;text-align:center}
+    .image-item img{display:block;max-width:600px;width:100%;height:auto;border-radius:10px;margin:0 auto}
+    .caption{max-width:600px;margin:10px auto 0;color:#555;font-size:14px;text-align:justify}
+
+    /* Upwork CTA at bottom */
+    .cta{background:#fff;border-radius:12px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.08);text-align:center}
+    .cta h2{margin:0 0 8px}
+    .cta p{margin:6px 0 16px}
+    .upwork-btn{display:inline-block;padding:12px 18px;border-radius:8px;background:#14a800;color:#fff;text-decoration:none;font-weight:700}
+    .upwork-btn:hover{filter:brightness(.95)}
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="#about">About Me</a>
-      <a href="#work">My Work</a>
-    </nav>
-  </header>
+  <!-- Nav -->
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Upwork</a></li>
+    </ul>
+  </nav>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <img src="profile.jpg" alt="My Profile Picture">
-    <div>
-      <h1>Hello, I'm Augustine</h1>
-      <p>Welcome to my professional portfolio. I am passionate about creating modern and functional architectural designs that blend aesthetics with practicality. With a focus on details, I bring unique concepts to life through creative design and rendering techniques.</p>
-      <p>My journey in architecture has allowed me to work on diverse projects ranging from interior spaces to large-scale residential and commercial concepts. I use the latest visualization tools to ensure that my work communicates clarity and vision to clients.</p>
-      <button onclick="window.open('https://www.upwork.com/freelancers/~0120a4e3d72389941f?companyReference=1108070241318502401&mp_source=share','_blank')">View My Upwork Profile</button>
-    </div>
-  </section>
+  <main>
+    <!-- About -->
+    <section id="about" class="about">
+      <!-- IMPORTANT: profile image must be at /images/profile.jpg -->
+      <img src="images/profile.jpg" alt="Augustine profile picture">
+      <div>
+        <h1>Hello, I'm Augustine</h1>
+        <p>
+          I specialize in clear, buildable drawings and interior visualizations that balance style and practicality.
+          I focus on simple, sustainable solutions that are easy to maintain and communicate well to clients, builders,
+          and reviewers. Tools: AutoCAD, Chief Architect, and 3D rendering.
+        </p>
+      </div>
+    </section>
 
-  <!-- Work Section -->
-  <section id="work" class="gallery">
-    <h2>My Work</h2>
-    
-    <div>
-      <img src="image1.jpg" alt="Kitchen Design and Rendering">
-      <p class="description">This is a kitchen design and rendering that highlights functionality and elegance. The design combines natural tones with modern finishes to create a warm and welcoming cooking space. Lighting and textures are carefully balanced to bring realism and harmony into the environment. This project demonstrates how digital visualization can effectively capture a client’s vision.</p>
-    </div>
-    
-    <div>
-      <img src="image2.jpg" alt="Kitchen Design">
-      <p class="description">This kitchen design emphasizes open space planning and minimalism. Clean lines, practical layouts, and natural light contribute to a bright and efficient working environment. The focus here was on creating a seamless flow between cooking, storage, and dining areas, tailored for both functionality and aesthetics. It’s a showcase of modern living design standards.</p>
-    </div>
-    
-    <div>
-      <img src="image3.jpg" alt="Living Room and Dining Interior Design">
-      <p class="description">This living room and dining interior design merges sophistication with comfort. Soft furnishings, lighting accents, and balanced color palettes establish an inviting and stylish atmosphere. The open-plan arrangement connects the two spaces fluidly, enhancing social interaction. This project demonstrates how thoughtful design transforms interiors into inspiring spaces for everyday living.</p>
-    </div>
-    
-  </section>
+    <!-- Skills -->
+    <section id="skills" class="skills">
+      <h2>Skills</h2>
+      <ol type="A">
+        <li>AutoCAD (2D/3D drafting, details, layouts)</li>
+        <li>Chief Architect (residential plans & interiors)</li>
+        <li>3D Rendering & Visualization (lighting/materials)</li>
+        <li>Space Planning & Documentation</li>
+        <li>Landscape Concepts & Elevation Coordination</li>
+      </ol>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="image-gallery">
+      <h2>Project Gallery</h2>
+
+      <div class="image-item">
+        <!-- IMPORTANT: project images must be inside /images and names must match -->
+        <img src="images/img1.jpg" alt="Kitchen design and rendering">
+        <p class="caption">
+          Modern kitchen design & high-quality 3D rendering that communicates layout, finishes, and lighting before build.
+          Workflow and storage are balanced with a warm, clean palette. Layered lighting (task + ambient) previews daytime
+          and evening scenes. Cabinet modules and clearances reduce door conflicts and tight corners. Deliverables include
+          plan, elevations, and key views to speed alignment with installers.
+        </p>
+      </div>
+
+      <div class="image-item">
+        <img src="images/img2.jpg" alt="Kitchen design">
+        <p class="caption">
+          Functional layout emphasizing circulation, work-triangle efficiency, and accessible storage.
+          Neutral finishes keep the space timeless and easy to update. Drawer stacks replace deep shelves for quick access.
+          Tall pantry placement shortens travel distance between prep, cook, and serve zones. Documentation centers on
+          practical dimensioning that reduces on-site guesswork.
+        </p>
+      </div>
+
+      <div class="image-item">
+        <img src="images/img3.jpg" alt="Living room and dining interior design">
+        <p class="caption">
+          Open-plan living/dining arranged for easy movement and clear sightlines. Seating and table positions support
+          conversation while maintaining comfortable walk paths. Durable, low-maintenance finishes suit daily use.
+          Lighting scenes separate lounge, dining, and ambient moods without clutter. The result feels calm, modern, and welcoming.
+        </p>
+      </div>
+    </section>
+
+    <!-- Upwork CTA at the BOTTOM -->
+    <section id="contact" class="cta">
+      <h2>Work With Me on Upwork</h2>
+      <p>I take on architecture, interior design, and visualization projects directly through Upwork.</p>
+      <a class="upwork-btn"
+         href="https://www.upwork.com/freelancers/~0120a4e3d72389941f?companyReference=1108070241318502401&mp_source=share"
+         target="_blank" rel="noopener">
+        View my Upwork Profile
+      </a>
+      <p style="font-size:13px;color:#666;margin-top:10px;">
+        Note: I communicate and contract exclusively on Upwork, per platform policy.
+      </p>
+    </section>
+  </main>
 </body>
 </html>
