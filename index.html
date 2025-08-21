@@ -1,88 +1,105 @@
-;<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interior Design Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Austine — Portfolio</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-      padding: 0;
-    }
-    h1 {
-      text-align: center;
-      margin: 20px;
-    }
-    .image-gallery {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-      margin: 20px;
-    }
-    .image-item {
-      max-width: 800px;
-      text-align: center;
-      background: #fff;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .image-item img {
-      width: 90%;
-      height: auto;
-      border-radius: 6px;
-    }
-    .caption {
-      margin-top: 15px;
-      font-size: 16px;
-      line-height: 1.6;
-      color: #444;
-      text-align: justify;
-    }
+    /* Layout & colors */
+    body{font-family:Arial,sans-serif;margin:0;background:#f9f9f9;color:#222;line-height:1.6}
+    header{background:#222;color:#fff;padding:22px;text-align:center}
+    main{max-width:950px;margin:0 auto;padding:22px}
+    h1,h2{color:#333;margin:0 0 12px}
+    section{margin:28px 0}
+
+    /* About card */
+    .about{display:flex;gap:18px;align-items:center;background:#fff;border-radius:10px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+    .about img{width:120px;height:120px;object-fit:cover;border-radius:60px;border:2px solid #eee}
+
+    /* Skills list */
+    .skills{background:#fff;border-radius:10px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+    .skills ol{margin:0;padding-left:22px}
+
+    /* Image gallery (one per row, smaller) */
+    .image-gallery{display:flex;flex-direction:column;gap:22px}
+    .image-item{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:14px}
+    .image-item img{display:block;max-width:600px;width:100%;height:auto;margin:0 auto;border-radius:8px}
+    .caption{max-width:600px;margin:10px auto 0;font-size:14px;color:#444}
   </style>
 </head>
 <body>
-  <h1>My Interior Design Projects</h1>
+  <header>
+    <h1>Austine — Architectural & Landscape Designer</h1>
+    <div>Construction plans • Interior visualization • Site planning</div>
+  </header>
 
-  <div class="image-gallery">
-    <!-- Image 1 -->
-    <div class="image-item">
-      <img src="img1.jpg" alt="Kitchen design and rendering">
-      <div class="caption">
-        This project showcases a modern kitchen design presented through a detailed 3D rendering.  
-        The layout is carefully planned to balance both aesthetics and practicality, ensuring smooth workflow for cooking and storage.  
-        High-quality materials are represented in the rendering, including sleek countertops, modern cabinetry, and warm ambient lighting.  
-        Special attention was given to creating a contemporary feel while maintaining a welcoming atmosphere for family use.  
-        This visualization helps clients clearly understand the finished look before implementation.
+  <main>
+    <!-- About -->
+    <section class="about">
+      <!-- Upload an image named images/profile.jpg or change the filename below -->
+      <img src="images/profile.jpg" alt="Austine profile portrait" />
+      <div>
+        <h2>About Me</h2>
+        <p>
+          I create clear, permit-ready construction drawings, interior design visuals, and practical
+          landscape solutions that are easy to build and maintain. I focus on simple, sustainable,
+          client-friendly designs that respect budget, climate, and site constraints.
+        </p>
       </div>
-    </div>
+    </section>
 
-    <!-- Image 2 -->
-    <div class="image-item">
-      <img src="img2.jpg" alt="Kitchen design">
-      <div class="caption">
-        This kitchen interior design highlights simplicity, elegance, and modern functionality.  
-        The cabinetry is organized to maximize storage, while maintaining a clean, uncluttered aesthetic.  
-        Lighting placement was carefully considered to create both task-focused brightness and soft evening ambiance.  
-        The design focuses on neutral tones combined with subtle contrasts, making it timeless and adaptable.  
-        Overall, the space reflects a perfect blend of practicality and visual appeal, suitable for everyday family living.
-      </div>
-    </div>
+    <!-- Skills -->
+    <section class="skills">
+      <h2>Skills</h2>
+      <ol type="A">
+        <li>AutoCAD (2D/3D)</li>
+        <li>Chief Architect (Residential & Commercial)</li>
+        <li>Landscape Design</li>
+        <li>Construction Drawings & Permit Plans</li>
+        <li>3D Visualization & Rendering</li>
+        <li>Site Planning & Elevation Management</li>
+      </ol>
+    </section>
 
-    <!-- Image 3 -->
-    <div class="image-item">
-      <img src="img3.jpg" alt="Living room and dining interior design">
-      <div class="caption">
-        This project brings together a living room and dining space with an open-plan interior design.  
-        The furniture arrangement is planned to create a natural flow between relaxation and dining activities.  
-        Warm tones, modern furnishings, and carefully layered lighting contribute to a cozy yet sophisticated atmosphere.  
-        Each detail — from the choice of dining chairs to the placement of decorative elements — was curated for harmony.  
-        The overall result is a comfortable and inviting environment that balances style, function, and everyday usability.
+    <!-- Work -->
+    <section>
+      <h2>My Work</h2>
+
+      <div class="image-gallery">
+        <div class="image-item">
+          <img src="img1.jpg" alt="Kitchen design and rendering — dining table with pendant lights" />
+          <div class="caption">
+            <strong>Kitchen Design & Rendering.</strong>
+            Clean modern palette with warm wood textures and matte black accents.
+            Layout optimized for cooking flow and sightlines to the dining area.
+            Lighting mix balances task pendants with soft ambient wash.
+            Materials selected for easy cleaning and durability in daily use.
+          </div>
+        </div>
+
+        <div class="image-item">
+          <img src="img2.jpg" alt="Kitchen design — cabinetry, work triangle and storage concept" />
+          <div class="caption">
+            <strong>Kitchen Design Concept.</strong>
+            Functional work-triangle between sink, hob, and fridge for efficient prep.
+            Tall pantry and base drawers maximize accessible storage.
+            Neutral finishes allow future appliance and decor updates.
+            Clearances meet comfortable movement and appliance door swings.
+          </div>
+        </div>
+
+        <div class="image-item">
+          <img src="img3.jpg" alt="Living room and dining interior design — seating and finishes" />
+          <div class="caption">
+            <strong>Living & Dining Interior.</strong>
+            Cohesive seating arrangement supports conversation and dining comfort.
+            Warm natural tones paired with simple forms for a calm feel.
+            Practical finishes specified for easy maintenance and longevity.
+            Lighting layered to separate dining, lounge, and ambient scenes.
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 </body>
 </html>
