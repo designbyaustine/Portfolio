@@ -1,69 +1,88 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Austine | Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interior Design Portfolio</title>
   <style>
-    body { font-family: Arial, sans-serif; margin:0; line-height:1.6; }
-    header { background:#333; color:#fff; padding:20px; text-align:center; }
-    main { max-width:1100px; margin:0 auto; padding:24px; }
-    h2 { margin-top:24px; color:#333; }
-    section { padding-top:6px; }
-    footer { background:#f4f4f4; text-align:center; padding:12px; margin-top:24px; }
-    ul, ol { padding-left:18px; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      margin: 20px;
+    }
+    .image-gallery {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      margin: 20px;
+    }
+    .image-item {
+      max-width: 800px;
+      text-align: center;
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .image-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+    .caption {
+      margin-top: 15px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #444;
+      text-align: justify;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Austine — Architectural & Landscape Designer</h1>
-    <p>AutoCAD • Chief Architect • Permit Plans • 3D Visualization</p>
-  </header>
+  <h1>My Interior Design Projects</h1>
 
-  <main>
-    <section>
-      <h2>About</h2>
-      <ol>
-        <li>Skilled Architectural Designer with construction and permit plans experience.</li>
-        <li>Landscape design focused on sustainability and low maintenance.</li>
-        <li>Interior design for modern, functional spaces.</li>
-        <li>Proficient in Chief Architect and AutoCAD (2D/3D).</li>
-      </ol>
-    </section>
+  <div class="image-gallery">
+    <!-- Image 1 -->
+    <div class="image-item">
+      <img src="img1.jpg" alt="Kitchen design and rendering">
+      <div class="caption">
+        This project showcases a modern kitchen design presented through a detailed 3D rendering.  
+        The layout is carefully planned to balance both aesthetics and practicality, ensuring smooth workflow for cooking and storage.  
+        High-quality materials are represented in the rendering, including sleek countertops, modern cabinetry, and warm ambient lighting.  
+        Special attention was given to creating a contemporary feel while maintaining a welcoming atmosphere for family use.  
+        This visualization helps clients clearly understand the finished look before implementation.
+      </div>
+    </div>
 
-    <section>
-      <h2>Skills</h2>
-      <ol type="A">
-        <li>AutoCAD (2D/3D)</li>
-        <li>Chief Architect</li>
-        <li>Landscape Design</li>
-        <li>Construction Drawings & Permit Plans</li>
-        <li>3D Visualization & Rendering</li>
-        <li>Site Planning & Elevation Management</li>
-      </ol>
-   <div class="project-gallery">
-  <figure>
-    <img src="img1.jpg" alt="Kitchen design and rendering">
-    <figcaption>
-      A modern kitchen design with a detailed 3D rendering that highlights the layout, cabinetry, and lighting choices. 
-      The rendering provides a realistic preview of the finished kitchen space.
-    </figcaption>
-  </figure>
-  
-  <figure>
-    <img src="img2.jpg" alt="Kitchen design">
-    <figcaption>
-      A clean and functional kitchen design concept, focusing on space optimization, minimal aesthetics, 
-      and practical storage solutions for everyday use.
-    </figcaption>
-  </figure>
-  
-  <figure>
-    <img src="img3.jpg" alt="Living room and dining interior design">
-    <figcaption>
-      An elegant open-plan living and dining interior design that blends comfort and style, 
-      featuring coordinated furniture, warm lighting, and a welcoming atmosphere.
-    </figcaption>
-  </figure>
-</div>
-   
+    <!-- Image 2 -->
+    <div class="image-item">
+      <img src="img2.jpg" alt="Kitchen design">
+      <div class="caption">
+        This kitchen interior design highlights simplicity, elegance, and modern functionality.  
+        The cabinetry is organized to maximize storage, while maintaining a clean, uncluttered aesthetic.  
+        Lighting placement was carefully considered to create both task-focused brightness and soft evening ambiance.  
+        The design focuses on neutral tones combined with subtle contrasts, making it timeless and adaptable.  
+        Overall, the space reflects a perfect blend of practicality and visual appeal, suitable for everyday family living.
+      </div>
+    </div>
+
+    <!-- Image 3 -->
+    <div class="image-item">
+      <img src="img3.jpg" alt="Living room and dining interior design">
+      <div class="caption">
+        This project brings together a living room and dining space with an open-plan interior design.  
+        The furniture arrangement is planned to create a natural flow between relaxation and dining activities.  
+        Warm tones, modern furnishings, and carefully layered lighting contribute to a cozy yet sophisticated atmosphere.  
+        Each detail — from the choice of dining chairs to the placement of decorative elements — was curated for harmony.  
+        The overall result is a comfortable and inviting environment that balances style, function, and everyday usability.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
