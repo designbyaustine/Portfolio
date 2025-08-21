@@ -1,100 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Austine – Portfolio (Upwork)</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
   <style>
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;line-height:1.6;background:#f7f7f7;color:#222}
-    main{max-width:960px;margin:0 auto;padding:24px}
-    h1,h2{margin:0 0 12px;color:#333}
-    section{background:#fff;border-radius:10px;padding:18px;margin:20px 0;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-    /* About */
-    .about{display:flex;gap:18px;align-items:center}
-    .about img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid #eee}
+    body{font-family:Arial,sans-serif;margin:0;padding:0;background:#f4f4f4;color:#333}
+    main{max-width:950px;margin:0 auto;padding:20px}
+    h1,h2{color:#333;margin:0 0 12px}
+    section{margin:60px 0}
+
+    /* Navigation */
+    nav{position:fixed;top:0;left:0;width:100%;background:#222;padding:12px 0;z-index:1000}
+    nav ul{list-style:none;display:flex;justify-content:center;margin:0;padding:0}
+    nav ul li{margin:0 15px}
+    nav ul li a{color:#fff;text-decoration:none;font-weight:bold}
+    nav ul li a:hover{color:#14a800}
+    body{padding-top:60px} /* space for fixed nav */
+
+    /* About card */
+    .about{display:flex;gap:18px;align-items:center;background:#fff;padding:20px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    .about img{width:120px;height:120px;object-fit:cover;border-radius:50%;border:3px solid #14a800}
+    
     /* Skills */
-    .skills ol{margin:0;padding-left:20px}
-    /* Projects */
-    .proj{display:flex;flex-direction:column;gap:22px}
-    .card{padding:12px;border:1px solid #eee;border-radius:8px}
-    .card img{display:block;max-width:650px;width:100%;height:auto;border-radius:8px;margin:0 auto 10px}
-    .card h3{margin:6px 0 8px}
-    .card p{margin:6px 0;text-align:justify}
+    .skills{background:#fff;border-radius:10px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    .skills ol{margin:0;padding-left:22px}
+    
+    /* Gallery */
+    .image-gallery{display:flex;flex-direction:column;gap:20px}
+    .image-item{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:10px;text-align:center}
+    .image-item img{display:block;max-width:600px;width:100%;border-radius:10px;margin:0 auto}
+    .caption{max-width:600px;margin:10px auto 0;font-size:14px;color:#555}
+    
+    /* Upwork CTA */
+    .cta{background:#fff;border-radius:12px;padding:24px;margin:28px 0;box-shadow:0 2px 8px rgba(0,0,0,.08);text-align:center}
+    .cta h2{margin:0 0 10px}
+    .cta p{margin:6px 0 18px}
+    .cta a.upwork-btn{display:inline-block;padding:12px 18px;border-radius:8px;background:#14a800;color:#fff;text-decoration:none;font-weight:700}
+    .cta a.upwork-btn:hover{filter:brightness(.95)}
   </style>
 </head>
 <body>
-  <main>
-    <header style="text-align:center;margin-bottom:10px;">
-      <h1>Austine – Interior & Architectural Designer</h1>
-      <div style="color:#666">AutoCAD • Chief Architect • 3D Visualization • Permit/Construction Plans</div>
-    </header>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <!-- About (no external links) -->
-    <section class="about">
-      <img src="images/profile.jpg" alt="Austine profile portrait">
+  <main>
+    <!-- About -->
+    <section id="about" class="about">
+      <img src="profile.jpg" alt="My Profile Picture">
       <div>
-        <h2>About Me</h2>
-        <p>
-          I design clear, buildable drawings and interior visuals that balance style and practicality.
-          My focus is simple, sustainable solutions that are easy to maintain and communicate well
-          to clients, builders, and reviewers. I work across kitchens, living areas, and full-home
-          layouts, producing neat documentation and visuals that reduce revisions and delays.
-        </p>
+        <h1>Hello, I'm [Your Name]</h1>
+        <p>Welcome to my portfolio. I specialize in architecture, design, and visualization.</p>
       </div>
     </section>
 
-    <!-- Skills (no icons, no links) -->
-    <section class="skills">
+    <!-- Skills -->
+    <section id="skills" class="skills">
       <h2>Skills</h2>
-      <ol type="A">
-        <li>AutoCAD (2D/3D drafting, details, layouts)</li>
-        <li>Chief Architect (residential plans & interiors)</li>
-        <li>3D rendering & visualization (lighting/materials)</li>
-        <li>Space planning & code-aware documentation</li>
-        <li>Landscape concepts & elevation coordination</li>
+      <ol>
+        <li>Architectural Design</li>
+        <li>Interior Design</li>
+        <li>3D Modeling & Rendering</li>
+        <li>AutoCAD, Revit, SketchUp</li>
       </ol>
     </section>
 
-    <!-- Projects (images + long descriptions, no outbound links) -->
-    <section id="work">
-      <h2>My Work</h2>
-      <div class="proj">
-        <div class="card">
-          <h3>Kitchen Design & Rendering</h3>
-          <img src="img1.jpg" alt="Kitchen design and rendering">
-          <p>
-            A modern kitchen visualization that communicates layout, finishes, and lighting before build.
-            The concept balances workflow and storage with a clean, warm palette clients can relate to.
-            Lighting is layered (task + ambient) for accurate previews of daytime and evening scenes.
-            Cabinet modules and clearances are arranged to minimize door conflicts and tight corners.
-            Deliverables include plan, elevations, and render views to speed alignment with installers.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Kitchen Design</h3>
-          <img src="img2.jpg" alt="Kitchen design">
-          <p>
-            A functional concept emphasizing circulation, work triangle efficiency, and accessible storage.
-            Neutral materials keep the space timeless while allowing easy appliance or color updates later.
-            Drawer stacks replace deep shelves for faster access to cookware and daily essentials.
-            Tall pantry placement shortens travel distance between prep, cook, and serve zones.
-            Documentation focuses on practical dimensioning that reduces on-site guesswork.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Living Room & Dining Interior</h3>
-          <img src="img3.jpg" alt="Living room and dining interior design">
-          <p>
-            Open-plan living/dining arranged for clear movement and natural sightlines across the space.
-            Seating and table positions support conversation while maintaining comfortable walk paths.
-            Materials and textures are selected for durability and easy upkeep in daily use.
-            Lighting scenes separate lounge, dining, and ambient moods without visual clutter.
-            The result is a calm, modern environment that photographs well and feels welcoming in person.
-          </p>
-        </div>
+    <!-- Gallery -->
+    <section id="gallery" class="image-gallery">
+      <h2>Project Gallery</h2>
+      <div class="image-item">
+        <img src="img1.jpg" alt="Project 1">
+        <p class="caption">Modern residential design</p>
       </div>
+      <div class="image-item">
+        <img src="img2.jpg" alt="Project 2">
+        <p class="caption">Interior visualization</p>
+      </div>
+      <div class="image-item">
+        <img src="img3.jpg" alt="Project 3">
+        <p class="caption">Commercial space design</p>
+      </div>
+    </section>
+
+    <!-- Upwork CTA -->
+    <section id="contact" class="cta">
+      <h2>Work With Me on Upwork</h2>
+      <p>I take on architecture, interior design, and visualization projects directly through Upwork.</p>
+      <a class="upwork-btn" href="YOUR_UPWORK_PROFILE_URL" target="_blank" rel="noopener">View my Upwork Profile</a>
+      <p style="font-size:13px;color:#666;margin-top:10px;">
+        Note: I communicate and contract exclusively on Upwork, per platform policy.
+      </p>
     </section>
   </main>
 </body>
