@@ -1,150 +1,450 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Augustine – Portfolio</title>
+  <title>Augustine — Portfolio</title>
 
+  <!-- Basic, clean, mobile-first styles -->
   <style>
     :root{
-      --bg:#f7f7f7; --card:#ffffff; --ink:#222; --muted:#666; --accent:#1f7a8c;
-      --radius:12px;
+      --bg:#f5f6f8;
+      --card:#ffffff;
+      --text:#2c2c2c;
+      --muted:#6b7280;
+      --accent:#286ef6;
+      --radius:14px;
+      --shadow:0 6px 20px rgba(0,0,0,.08);
+      --max:1024px;
+      --tile-img-h:220px; /* controls image height on cards */
     }
     *{box-sizing:border-box}
-    body{margin:0; font-family: Arial, Helvetica, sans-serif; color:var(--ink); background:var(--bg)}
-    main{max-width:1000px; margin:24px auto; padding:0 16px}
-    h1{font-size:clamp(28px,4.5vw,38px); text-align:center; margin:10px 0 26px}
-
-    /* Gallery grid */
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap:18px;
+    body{
+      margin:0;
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      color:var(--text);
+      background:var(--bg);
     }
-    .tile{
+
+    /* Sticky top bar */
+    .top{
+      position:sticky; top:0; z-index:10;
+      background:#fff; box-shadow:var(--shadow);
+    }
+    .nav{
+      max-width:var(--max);
+      margin:0 auto;
+      display:flex; gap:14px; align-items:center; justify-content:space-between;
+      padding:10px 16px;
+    }
+    .brand{font-weight:700}
+    .nav a{
+      color:var(--text); text-decoration:none; font-weight:600;
+      padding:8px 10px; border-radius:8px;
+    }
+    .nav a:hover{background:#eef2ff}
+
+    main{max-width:var(--max); margin:22px auto; padding:0 14px}
+
+    /* About */
+    .card{
       background:var(--card);
       border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:0 2px 8px rgba(0,0,0,.08);
-      display:flex;
-      flex-direction:column;
+      box-shadow:var(--shadow);
+      padding:18px;
     }
-    /* Uniform image size without huge height on mobile */
+    .about{
+      display:grid;
+      grid-template-columns:96px 1fr;
+      gap:16px;
+      align-items:center;
+    }
+    .about img{
+      width:96px; height:96px; border-radius:50%;
+      object-fit:cover;
+      border:3px solid #fff; box-shadow:0 2px 10px rgba(0,0,0,.1);
+    }
+    h1,h2{margin:0 0 10px 0}
+    .muted{color:var(--muted)}
+
+    /* Pills skills */
+    .skills{
+      display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;
+    }
+    .pill{
+      background:#eef2ff; color:#1f2937; font-weight:600;
+      padding:8px 12px; border-radius:999px; font-size:14px;
+    }
+
+    /* Section blocks */
+    section{margin:28px 0}
+    section .section-title{margin-bottom:10px}
+    .section-title small{color:var(--muted); font-weight:500}
+
+    /* Gallery grid */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:16px;
+    }
+    @media (max-width:980px){ .grid{grid-template-columns:repeat(2, 1fr)} }
+    @media (max-width:640px){ .grid{grid-template-columns:1fr} }
+
+    /* Tile / card */
+    .tile{
+      background:var(--card);
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      display:flex; flex-direction:column;
+    }
     .tile img{
-      width:100%;
-      aspect-ratio: 16 / 10;        /* keeps a neat rectangle */
-      object-fit: cover;             /* crops gently if needed */
-      display:block;
+      display:block; width:100%;
+      height:var(--tile-img-h);
+      object-fit:cover; /* keeps images neat and same height */
+      background:#ddd;
     }
     .tile__body{padding:14px}
-    .tile__title{margin:0 0 8px; font-size:18px; font-weight:700}
-    .tile__desc{margin:0; color:var(--muted); line-height:1.5; font-size:14px}
+    .tile__title{margin:0 0 6px 0; font-weight:700}
+    .tile__desc{margin:0; color:var(--muted); font-size:15px}
+
+    /* Footer CTA */
+    .cta{
+      display:flex; gap:12px; flex-wrap:wrap; margin-top:8px;
+    }
+    .btn{
+      display:inline-block; text-decoration:none; font-weight:700;
+      padding:12px 16px; border-radius:10px;
+    }
+    .btn--accent{background:var(--accent); color:#fff}
+    .btn--ghost{border:2px solid var(--accent); color:var(--accent); background:#fff}
+    .btn:hover{filter:brightness(.96)}
   </style>
 </head>
 <body>
-  <main>
-    <h1>My Portfolio</h1>
 
-    <div class="gallery">
-      <!-- Ranchhouse.jpg -->
-      <article class="tile">
-        <img src="images/Ranchhouse.jpg" alt="Ranchhouse exterior rendering">
-        <div class="tile__body">
-          <h3 class="tile__title">Ranchhouse Exterior</h3>
-          <p class="tile__desc">Modern ranch house massing with clean lines, warm materials, and a low-profile roof. The façade balances solid wall areas with generous glazing to create welcoming curb appeal.</p>
-        </div>
-      </article>
-
-      <!-- face-mirror.jpg -->
-      <article class="tile">
-        <img src="images/face-mirror.jpg" alt="Vanity mirror close-up">
-        <div class="tile__body">
-          <h3 class="tile__title">Vanity Mirror Detail</h3>
-          <p class="tile__desc">Frameless mirror composition designed to reflect light and extend sightlines. Finishes are kept calm and neutral for a timeless, easy-to-maintain look.</p>
-        </div>
-      </article>
-
-      <!-- front-mirror.jpg -->
-      <article class="tile">
-        <img src="images/front-mirror.jpg" alt="Front mirror vignette">
-        <div class="tile__body">
-          <h3 class="tile__title">Front Mirror View</h3>
-          <p class="tile__desc">Front-facing vignette pairing simple geometry with a restrained material palette. Lighting is positioned to avoid glare and give a soft, even reflection.</p>
-        </div>
-      </article>
-
-      <!-- img1.jpg -->
-      <article class="tile">
-        <img src="images/img1.jpg" alt="Kitchen design and rendering">
-        <div class="tile__body">
-          <h3 class="tile__title">Kitchen Design & Rendering</h3>
-          <p class="tile__desc">Modern kitchen layout with clear circulation, efficient workflow, and durable finishes. Cabinet modules are dimensioned for easy fabrication and installation.</p>
-        </div>
-      </article>
-
-      <!-- img2.jpg -->
-      <article class="tile">
-        <img src="images/img2.jpg" alt="Kitchen view">
-        <div class="tile__body">
-          <h3 class="tile__title">Kitchen View</h3>
-          <p class="tile__desc">A second kitchen angle showing storage, task/ambient lighting, and a warm, simple color palette that supports everyday use.</p>
-        </div>
-      </article>
-
-      <!-- img3.jpg -->
-      <article class="tile">
-        <img src="images/img3.jpg" alt="Living and dining interior">
-        <div class="tile__body">
-          <h3 class="tile__title">Living & Dining Interior</h3>
-          <p class="tile__desc">Open-plan living/dining arranged for easy movement and clear sightlines. Materials are selected for comfort, durability, and low maintenance.</p>
-        </div>
-      </article>
-
-      <!-- office-1.jpg -->
-      <article class="tile">
-        <img src="images/office-1.jpg" alt="3D interior office design">
-        <div class="tile__body">
-          <h3 class="tile__title">Office Interior</h3>
-          <p class="tile__desc">3D visualization of a small office: task lighting, practical storage, and a calm palette that supports focused work and client meetings.</p>
-        </div>
-      </article>
-
-      <!-- permitplan.jpg -->
-      <article class="tile">
-        <img src="images/permitplan.jpg" alt="Permit plan sheet (JPG)">
-        <div class="tile__body">
-          <h3 class="tile__title">Permit Plan (JPG)</h3>
-          <p class="tile__desc">Sample permit sheet emphasizing clear dimensions, callouts, and code notes. Organized for quick reviews and field use.</p>
-        </div>
-      </article>
-
-      <!-- permitplan.png -->
-      <article class="tile">
-        <img src="images/permitplan.png" alt="Permit plan sheet (PNG)">
-        <div class="tile__body">
-          <h3 class="tile__title">Permit Plan (PNG)</h3>
-          <p class="tile__desc">Alternate export format of the same drawing set for flexible sharing and printing environments.</p>
-        </div>
-      </article>
-
-      <!-- profile.jpg (kept for completeness; you can remove if you only want projects) -->
-      <article class="tile">
-        <img src="images/profile.jpg" alt="Augustine profile">
-        <div class="tile__body">
-          <h3 class="tile__title">Profile</h3>
-          <p class="tile__desc">Portrait used across portfolio and proposals.</p>
-        </div>
-      </article>
-
-      <!-- slantroof.jpg -->
-      <article class="tile">
-        <img src="images/slantroof.jpg" alt="Slanted roof concept">
-        <div class="tile__body">
-          <h3 class="tile__title">Slanted Roof Concept</h3>
-          <p class="tile__desc">Low-slope roof composition emphasizing horizontal lines, weather protection, and a clean modern character.</p>
-        </div>
-      </article>
+  <!-- Sticky nav -->
+  <div class="top">
+    <div class="nav">
+      <div class="brand">Augustine</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#gallery">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
+  </div>
+
+  <main>
+    <!-- ABOUT -->
+    <section id="about" class="card">
+      <div class="about">
+        <!-- profile.jpg lives in the repo root per your screenshot -->
+        <img src="profile.jpg" alt="Profile photo of Augustine">
+        <div>
+          <h1>Hello, I'm Augustine</h1>
+          <p class="muted">
+            I create clear, buildable drawings and photoreal interior/exterior visuals.
+            My goal is simple, sustainable solutions that are easy to build and maintain.
+            Tools: AutoCAD, Chief Architect, and 3D rendering.
+          </p>
+          <div class="cta">
+            <a class="btn btn--accent" href="https://www.upwork.com/freelancers/~0120a4e3d72389941f?companyReference=1108070241318502401&mp_source=share" target="_blank" rel="noopener">Hire me on Upwork</a>
+            <a class="btn btn--ghost" href="#gallery">See my work</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="section-title">Skills <small>(tools & focus)</small></h2>
+      <div class="skills">
+        <span class="pill">AutoCAD (2D/3D)</span>
+        <span class="pill">Chief Architect</span>
+        <span class="pill">Construction Drawings</span>
+        <span class="pill">Permit Sets</span>
+        <span class="pill">3D Visualization</span>
+        <span class="pill">Interior & Exterior Design</span>
+        <span class="pill">Site Planning</span>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="gallery">
+      <h2 class="section-title">My Portfolio</h2>
+
+      <!-- Outdoors -->
+      <section>
+        <h3 class="section-title">Outdoors</h3>
+        <div class="grid">
+          <article class="tile">
+            <img src="outdoor.jpg" alt="Outdoor scene">
+            <div class="tile__body">
+              <h4 class="tile__title">Outdoor Scene</h4>
+              <p class="tile__desc">Open-air seating and greenery arranged for comfort and easy maintenance.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="outdoor4.jpg" alt="Outdoor variation">
+            <div class="tile__body">
+              <h4 class="tile__title">Outdoor Variation</h4>
+              <p class="tile__desc">Alternative layout emphasizing circulation, shade, and relaxed conversation areas.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="outd1.jpg" alt="Outdoor option 1">
+            <div class="tile__body">
+              <h4 class="tile__title">Outdoor Option 1</h4>
+              <p class="tile__desc">Simple hardscape and planting balance to keep the space timeless.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="outd2.jpg" alt="Outdoor option 2">
+            <div class="tile__body">
+              <h4 class="tile__title">Outdoor Option 2</h4>
+              <p class="tile__desc">Compact composition supporting quick movement and easy upkeep.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="courtyard1.jpg" alt="Courtyard concept">
+            <div class="tile__body">
+              <h4 class="tile__title">Courtyard Concept</h4>
+              <p class="tile__desc">Sheltered courtyard with warm lighting and planting for year-round use.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Exteriors -->
+      <section>
+        <h3 class="section-title">Exteriors</h3>
+        <div class="grid">
+          <article class="tile">
+            <img src="3dexterior.jpg" alt="3D exterior view">
+            <div class="tile__body">
+              <h4 class="tile__title">3D Exterior View</h4>
+              <p class="tile__desc">Clean massing and modern materials shown at street perspective.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="exteriorender.jpg" alt="Exterior rendering">
+            <div class="tile__body">
+              <h4 class="tile__title">Exterior Rendering</h4>
+              <p class="tile__desc">Façade study balancing glazing, cladding rhythm, and roof line.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="Ranchhouse.jpg" alt="Ranch house">
+            <div class="tile__body">
+              <h4 class="tile__title">Ranch House</h4>
+              <p class="tile__desc">Low-profile roof with warm finishes for welcoming curb appeal.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="slantroof.jpg" alt="Slanted roof">
+            <div class="tile__body">
+              <h4 class="tile__title">Slanted Roof</h4>
+              <p class="tile__desc">Low-slope composition emphasizing horizontal lines and weathering.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 2D / Technical (plans & framing) -->
+      <section>
+        <h3 class="section-title">2D / Technical</h3>
+        <div class="grid">
+          <article class="tile">
+            <img src="ADUPLAN.jpg" alt="ADU plan">
+            <div class="tile__body">
+              <h4 class="tile__title">ADU Plan</h4>
+              <p class="tile__desc">Accessory dwelling layout with efficient circulation and clear dimensions.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="adaplanset.jpg" alt="ADA plan set">
+            <div class="tile__body">
+              <h4 class="tile__title">ADA Plan Set</h4>
+              <p class="tile__desc">Compliance focused sheets highlighting accessible routes and clearances.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="constructionpln.jpg" alt="Construction plan">
+            <div class="tile__body">
+              <h4 class="tile__title">Construction Plan</h4>
+              <p class="tile__desc">Build-ready drawings with dimensions, notes, and callouts.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="framingpln.jpg" alt="Framing plan">
+            <div class="tile__body">
+              <h4 class="tile__title">Framing Plan</h4>
+              <p class="tile__desc">Member layout and spans for quick on-site reference.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="3dframing.png" alt="3D framing">
+            <div class="tile__body">
+              <h4 class="tile__title">3D Framing</h4>
+              <p class="tile__desc">Framing model clarifying structure and connections in 3D.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="siteplan.jpg" alt="Site plan">
+            <div class="tile__body">
+              <h4 class="tile__title">Site Plan</h4>
+              <p class="tile__desc">Property layout, setbacks, utilities, and grading references.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="sitpln1.jpg" alt="Site plan 2">
+            <div class="tile__body">
+              <h4 class="tile__title">Site Plan (Alt)</h4>
+              <p class="tile__desc">Alternate site configuration emphasizing access and flow.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="permitplan.jpg" alt="Permit plan JPG">
+            <div class="tile__body">
+              <h4 class="tile__title">Permit Plan (JPG)</h4>
+              <p class="tile__desc">Sheet formatted for submittal, with general notes and legends.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="permitplan.png" alt="Permit plan PNG">
+            <div class="tile__body">
+              <h4 class="tile__title">Permit Plan (PNG)</h4>
+              <p class="tile__desc">Exported graphic for digital review and markups.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Commercial (2) -->
+      <section>
+        <h3 class="section-title">Commercial</h3>
+        <div class="grid">
+          <article class="tile">
+            <img src="comm1.jpg" alt="Commercial concept 1">
+            <div class="tile__body">
+              <h4 class="tile__title">Commercial Concept 1</h4>
+              <p class="tile__desc">Clean material palette and clear circulation for customer flow.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="comm2.jpg" alt="Commercial concept 2">
+            <div class="tile__body">
+              <h4 class="tile__title">Commercial Concept 2</h4>
+              <p class="tile__desc">Alternate layout emphasizing product visibility and seating.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Kitchen -->
+      <section>
+        <h3 class="section-title">Kitchens</h3>
+        <div class="grid">
+          <article class="tile">
+            <img src="img1.jpg" alt="Kitchen design 1">
+            <div class="tile__body">
+              <h4 class="tile__title">Kitchen Design & Rendering</h4>
+              <p class="tile__desc">Modern kitchen layout with clear circulation and durable finishes.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="img2.jpg" alt="Kitchen design 2">
+            <div class="tile__body">
+              <h4 class="tile__title">Kitchen View</h4>
+              <p class="tile__desc">Second view showing storage, task lighting, and work triangle.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="img3.jpg" alt="Kitchen design 3">
+            <div class="tile__body">
+              <h4 class="tile__title">Kitchen Angle</h4>
+              <p class="tile__desc">Alternate angle highlighting materials and daylight.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="chiefe33.jpg" alt="Chief Architect kitchen">
+            <div class="tile__body">
+              <h4 class="tile__title">Chief Architect Kitchen</h4>
+              <p class="tile__desc">Modeled in Chief Architect to validate cabinetry and clearances.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Living room renders -->
+      <section>
+        <h3 class="section-title">Living Room</h3>
+        <div class="grid">
+          <article class="tile">
+            <img src="liv1.jpg" alt="Living & dining interior">
+            <div class="tile__body">
+              <h4 class="tile__title">Living & Dining Interior</h4>
+              <p class="tile__desc">Open plan arrangement with clear sightlines and layered lighting.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Bathroom -->
+      <section>
+        <h3 class="section-title">Bathroom</h3>
+        <div class="grid">
+          <article class="tile">
+            <img src="face-mirror.jpg" alt="Vanity mirror detail">
+            <div class="tile__body">
+              <h4 class="tile__title">Vanity Mirror Detail</h4>
+              <p class="tile__desc">Frameless mirror composition extending sightlines and light.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="front-mirror.jpg" alt="Front mirror view">
+            <div class="tile__body">
+              <h4 class="tile__title">Front Mirror View</h4>
+              <p class="tile__desc">Front-facing vignette with warm finishes and even reflection.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Bedrooms / Others (optional) -->
+      <section>
+        <h3 class="section-title">Additional Interiors</h3>
+        <div class="grid">
+          <article class="tile">
+            <img src="bed1.jpg" alt="Bedroom interior">
+            <div class="tile__body">
+              <h4 class="tile__title">Bedroom Interior</h4>
+              <p class="tile__desc">Calm palette and soft lighting for a restful space.</p>
+            </div>
+          </article>
+          <article class="tile">
+            <img src="office-1.jpg" alt="Office interior">
+            <div class="tile__body">
+              <h4 class="tile__title">Office Interior</h4>
+              <p class="tile__desc">Compact workstation layout with comfortable task lighting.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card">
+      <h2>Work With Me on Upwork</h2>
+      <p class="muted">I’m available for residential, light commercial, and interior visualization work.</p>
+      <div class="cta">
+        <a class="btn btn--accent" href="https://www.upwork.com/freelancers/~0120a4e3d72389941f?companyReference=1108070241318502401&mp_source=share" target="_blank" rel="noopener">Visit my Upwork Profile</a>
+        <a class="btn btn--ghost" href="#about">Back to top</a>
+      </div>
+    </section>
+
   </main>
 </body>
 </html>
